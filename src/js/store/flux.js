@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			contacts: [
-				['pepe']
+				['Anna']
 			]
 		},
 		actions: {
