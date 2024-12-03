@@ -19,7 +19,7 @@ export const Contacts = () => {
                     <div className="d-flex justify-content-between contact mx-auto" key={contact}>
                         <div className="user my-auto"><i className="fa-solid fa-user user1"></i></div>
                         <div className="d-block">
-                        <div className="mb-2"><h5>{contact.name}</h5></div>
+                        <div className="mb-2"><h4>{contact.name}</h4></div>
                         <div className="mb-2"><i class="fa-solid fa-phone"></i> +34 {contact.phone}</div>
                         <div className="mb-2"><i class="fa-solid fa-envelope"></i> {contact.email}</div>
                         <div><i className="mb-2 fa-solid fa-location-dot"></i> {contact.address}</div>

@@ -14,21 +14,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				
 			},
-				addContact: (contact) => {
-				const store = getStore();
-				const contacts = store.contacts;
-				const newContacts = [...contacts, contact] 
-				setStore({  contacts: newContacts })
-			}
+		 addContact: async (contact) => {
+			try {
+				const resp = await fetch('https://playground.4geeks.com/contact/agendas/erik/contacts',{
+					method: 'POST',
+					headers: {
+						'Content-Type' : 'application/json'
 
-
-
-
-
-
-
-			}
+					},
+					body: JSON.stringify(contact)
+				})
+				if (!resp.ok) throw new Error('Error adding contact')
+					if (resp.status != 201) throw new Error('Error adding contact')
+						const data = await resp.json()
+						console.log(data);
+	
+					} catch (error) {
+						console.error(error)
+	
+					}
+				}
+			 }
 		}
-	};
+	}
 
 export default getState;
