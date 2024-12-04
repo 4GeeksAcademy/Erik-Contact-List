@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import "../../styles/newcontact.css"; 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useState } from "react";
 
 export const NewContact = () => {
 
   const { actions } = useContext(Context);
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     name : '',
@@ -23,7 +24,7 @@ export const NewContact = () => {
 
   const handleAddContact = e => {
     e.preventDefault();
-    actions.handleAddContact(formData)
+    actions.handleAddContact(formData, navigate)
   }
   
 

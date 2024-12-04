@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				
 			},
-		 handleAddContact: async (contact) => {
+		 handleAddContact: async (formData, navigate) => {
 			try {
 				const resp = await fetch('https://playground.4geeks.com/contact/agendas/erik/contacts',{
 					method: 'POST',
@@ -22,12 +22,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 						'Content-Type' : 'application/json'
 
 					},
-					body: JSON.stringify(contact)
+					body: JSON.stringify(formData)
 				})
 				if (!resp.ok) throw new Error('Error adding contact')
 					if (resp.status != 201) throw new Error('Error adding contact')
 						const data = await resp.json()
 						console.log(data);
+						getActions().getUser()
+						navigate("/")
 	
 					} catch (error) {
 						console.error(error)
