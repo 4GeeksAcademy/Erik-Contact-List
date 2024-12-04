@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const Contacts = () => {
 
 
-    const { store } = useContext(Context)
+    const { store, actions } = useContext(Context)
 
     return (
         <div className=" mt-5 container">
@@ -28,7 +28,7 @@ export const Contacts = () => {
                             </div>
                         <div>
                             <button className="btn btn-dark border border-warning m-1" onClick={() => { }}><i class="fa-solid fa-pen"></i></button>
-                            <button className="btn btn-dark border border-danger m-1" onClick={() => { }}><i class="fa-solid fa-x"></i></button>
+                            <button className="btn btn-dark border border-danger m-1" onClick={() => {actions.deleteContact(contact.id)}}><i class="fa-solid fa-x"></i></button>
                         </div>
 
                     </div>
