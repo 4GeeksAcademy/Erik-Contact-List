@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				
 			},
-		 addContact: async (contact) => {
+		 handleAddContact: async (contact) => {
 			try {
 				const resp = await fetch('https://playground.4geeks.com/contact/agendas/erik/contacts',{
 					method: 'POST',
