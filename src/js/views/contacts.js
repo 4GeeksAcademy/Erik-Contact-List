@@ -27,7 +27,9 @@ export const Contacts = () => {
                             </div>
                             </div>
                         <div>
-                            <button className="btn btn-dark border border-warning m-1" onClick={() => { }}><i class="fa-solid fa-pen"></i></button>
+                        <Link to={`new-contact/${contact.id}`} >
+                            <button className="btn btn-dark border border-warning m-1"><i class="fa-solid fa-pen"></i></button>
+                        </Link>
                             <button className="btn btn-dark border border-danger m-1" onClick={() => {actions.deleteContact(contact.id)}}><i class="fa-solid fa-x"></i></button>
                         </div>
 

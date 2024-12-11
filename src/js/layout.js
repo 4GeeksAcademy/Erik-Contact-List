@@ -17,9 +17,9 @@ const Layout = () => {
 				<ScrollToTop>
 					<Routes>
 						<Route path="/" element={<Contacts/>} />
+						<Route path="new-contact/:id" element={<NewContact/>} />
 						<Route path="new-contact" element={<NewContact/>} />
 						<Route path="*" element={<h1 className="text-light">Not found!</h1>} />
-						
 					</Routes>
 				</ScrollToTop>
 			</BrowserRouter>

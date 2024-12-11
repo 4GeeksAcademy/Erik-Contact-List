@@ -25,7 +25,22 @@ export const NewContact = () => {
   const handleAddContact = e => {
     e.preventDefault();
     actions.handleAddContact(formData, navigate)
+
+    const name = e.target.elements.name.value;
+    const phone = e.target.elements.phone.value;
+    const email = e.target.elements.email.value;
+    const address = e.target.elements.address.value;
+
+    if(id) {
+      actions.updateContact(id, {name, phone, email, address})
+    }
+    else{
+      actions.addContact({name, phone, email, address})
+    }
+    e.target.reset()
   }
+
+
   
 
   return (
