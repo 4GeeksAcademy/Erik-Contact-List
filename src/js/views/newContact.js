@@ -1,13 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "../../styles/newcontact.css"; 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useState } from "react";
 
+
 export const NewContact = () => {
 
-  const { actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const navigate = useNavigate()
+
+   const { id } = useParams();
+  
+      useEffect(() => {
+          if (id) {
+            const contactToEdit = store.contacts.find((contact) => contact.id === parseInt(id));
+          if (contactToEdit) {
+              setFormData(contactToEdit); 
+            }
+          }
+        }, [id, store.contacts]);
+  
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          if (id) {
+            console.log("Editing contact:", id, formData);
+            actions.updateContact(id, formData);
+          } else {
+            console.log("Creating new contact:", formData);
+            actions.handleAddContact(formData, navigate);
+          }
+          navigate("/");
+        };
+
 
   const [formData, setFormData] = useState({
     name : '',
@@ -45,7 +70,7 @@ export const NewContact = () => {
 
   return (
 
-    <form className="form mx-auto" onSubmit={handleAddContact}>
+    <form className="form mx-auto" onSubmit={handleSubmit}>
       <div className="mb-3">
         <label for="name" className="form-label text-light">Name</label>
         <input type="text" className="form-control" name="name" onChange={handleChange} value={formData.name} required />
@@ -66,7 +91,7 @@ export const NewContact = () => {
       
       <div className="d-flex justify-content-between">
         <Link to="/" className="btn btn-success button2">Go back home</Link>
-        <input type="submit" className="btn btn-primary button1" value="Add contact"/>
+        <input type="submit" className="btn btn-primary button1" value={id ? "Upadte contact" : "Add contact"}/>
       </div>
     </form>
 

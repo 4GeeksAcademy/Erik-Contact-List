@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/contacts.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export const Contacts = () => {
 
 
-    const { store, actions } = useContext(Context)
+    const { store, actions } = useContext(Context);
+   
 
     return (
         <div className=" mt-5 container">
